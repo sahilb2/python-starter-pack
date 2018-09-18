@@ -178,7 +178,9 @@ class Game:
                     if parent == start:
                         reached_start = True
                     else:
-                        new_paths.append(path.insert(0,parent))
+                        new_path = [n for n in path]
+                        new_path.insert(0, parent)
+                        new_paths.insert(0, new_path)
             if not reached_start:
                 paths = new_paths
 
