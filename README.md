@@ -37,7 +37,7 @@ Within the file `Game_API.py`, there are a variety of helpful functions for writ
 
 __IMPORTANT__: Do NOT use `print()` for debugging, as this will make your bot fail when the game runs.  Instead, use the `game.log()` function in `Game_API.py`.
 
-Within `Game_API`, three other classes are defined -- `Player`, `Monster`, and `DeathEffects`.  We reccomend only accessing the fields in these classes, since changing them might cause the `game` object to not properly represent the current state of the game.
+Within `Game_API`, three other classes are defined -- `Player`, `Monster`, and `DeathEffects`.  We recommend only accessing the fields in these classes, since changing them might cause the `game` object to not properly represent the current state of the game.
 
 ##### The following fields are in the `Player` class:
 - `player_num` : `int` (either 1 or 2)
@@ -74,6 +74,8 @@ Each field corresponds to the buff provided to a player's stat from defeating a 
 - `speed` : `int`
 
 #### The following are all functions in `Game_API`
+(Note: For any function that returns Player, Monster, or DeathEffects structs, the data in the structs may change between one turn and another, so you should make sure to only use structs returned during the current turn)
+
 `log(strn)`
 Logs the string `str` to `stderr` for debugging.
 
