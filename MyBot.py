@@ -8,11 +8,11 @@ import random
 
 first_line = True # do not remove
 
-# global variables can go here
+# global variables or other functions can go here
 stances = ["Rock", "Paper", "Scissors"]
 
-# loop for each turn
-for line in fileinput.input():
+# main player script logic
+for line in fileinput.input(): # loop over each line of input
     if first_line:
         game = game_API.Game(json.loads(line))
         first_line = False
@@ -22,11 +22,10 @@ for line in fileinput.input():
     # ----------YOUR CODE BELOW----------
     # this code will be executed each turn of the game
 
-    paths = game.shortest_paths(game.get_self().location, 3)
-    if len(paths) > 0 and len(paths[0]) > 0:
-        destination_node = paths[0][0]
-    else:
-        destination_node = 3
+    me = game.get_self()
+    nearest_monsters = game.nearest_monsters(me.location, 1)
+    paths = game.shortest_paths(me.location, nearest_monsters[0].location)
+    destination_node = paths[0][0]
 
     chosen_stance = stances[random.randint(0, 2)]
 

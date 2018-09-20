@@ -204,4 +204,59 @@ class Game:
                 return monster
         return Monster()
 
-    #def nearest_monsters(self, node, search_mode):
+    def get_monster_valid_function(self, search_mode):
+        if search_mode == 0:
+            return lambda m : True
+        elif search_mode == 1:
+            return lambda m : (m.dead == False)
+        elif search_mode == 2:
+            return lambda m : (m.dead == True)
+
+    def get_monster_valid_function_name(self, search_mode, name):
+        if search_mode == 0:
+            return lambda m : (m.name == name)
+        elif search_mode == 1:
+            return lambda m : (m.dead == False and m.name == name)
+        elif search_mode == 2:
+            return lambda m : (m.dead == True and m.name == name)
+
+    def nearest_monsters(self, node, search_mode):
+        return self.nearest_monsters_helper(node, self.get_monster_valid_function(search_mode))
+
+    def nearest_monsters_with_name(self, node, name, search_mode):
+        return self.nearest_monsters_helper(node, self.get_monster_valid_function_name(search_mode, name))
+
+    def nearest_monsters_helper(self, node, monster_valid):
+        valid_monsters = [None for n in self.nodes]
+        for mon in self.monsters:
+            if (monster_valid(mon)):
+                valid_monsters[mon.location] = mon
+
+        explored = []
+        to_explore = [node]
+        distances = [-1 for n in self.nodes]
+        distances[node] = 0
+
+        ret = []
+
+        min_dist = -1
+        done = False
+        while not done:
+            n = to_explore.pop(0)
+
+            if valid_monsters[n] is not None:
+                ret.append(valid_monsters[n])
+
+                if min_dist == -1:
+                    min_dist = distances[n]
+
+            if min_dist != -1 and distances[n] > min_dist:
+                return ret
+
+
+            for adj in self.nodes[n].adjacents:
+                if (distances[adj] == -1):
+                    distances[adj] = distances[n] + 1
+
+                if adj not in explored and adj not in to_explore:
+                    to_explore.append(adj)

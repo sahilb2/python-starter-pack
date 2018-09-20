@@ -119,5 +119,5 @@ Returns a list of `Monster` structs for all monsters nearest to `node` (includin
 - `search_mode = 1`: Only searches for live monsters
 - `search_mode = 2`: Only searches for dead monsters
 
-`nearest_monsters(node, name, search_type)`
-Same as the other `nearest_monster`, but only considers monsters with name `name`.
+`nearest_monsters_with_name(node, name, search_type)`
+Same as `nearest_monsters`, but only considers monsters with name `name`.
