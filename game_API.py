@@ -122,7 +122,7 @@ class Game:
         sys.stderr.flush()
 
     def get_duel_turn_num(self):
-        return 30
+        return 300
 
     def get_turn_num(self):
         return self.turn_number
