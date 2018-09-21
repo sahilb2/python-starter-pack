@@ -27,8 +27,8 @@ TODO: write this
     * You may also add other files or dependencies, but if you do, make sure to update the `.dockerignore` and `Dockerfile`s accordingly. If you have any questions about this, we're here to help!
 3. Run `mm play .`
     * This will build the bot in the given directory (`.`) and then starts a game in which your bot fights against itself.
-
-TODO: add basic instructions for other mm commands (or link to mm repo)
+4. To run two different bots against each other, run `mm play bot1_directory bot2_directory`.
+    * You must have valid `.dockerignore` and `Dockerfile` files in each directory.  We reccomend cloning this repository multiple times to achieve this.
 
 Use `mm help` for more information!
 
