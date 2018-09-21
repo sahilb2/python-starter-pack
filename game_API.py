@@ -114,11 +114,12 @@ class Game:
                         monster.update(unit_json)
                         break
 
-    def log(str):
+    def log(self, str):
         if (self.player_num == 1):
-            std.stderr.write("Player1: " + str + "\n")
+            sys.stderr.write("Player1: " + str + "\n")
         else:
-            std.stderr.write("Player2: " + str + "\n")
+            sys.stderr.write("Player2: " + str + "\n")
+        sys.stderr.flush()
 
     def get_duel_turn_num(self):
         return 30
