@@ -27,8 +27,8 @@ TODO: write this
     * You may also add other files or dependencies, but if you do, make sure to update the `.dockerignore` and `Dockerfile`s accordingly. If you have any questions about this, we're here to help!
 3. Run `mm play .`
     * This will build the bot in the given directory (`.`) and then starts a game in which your bot fights against itself.
-
-TODO: add basic instructions for other mm commands (or link to mm repo)
+4. To run two different bots against each other, run `mm play bot1_directory bot2_directory`.
+    * You must have valid `.dockerignore` and `Dockerfile` files in each directory.  We reccomend cloning this repository multiple times to achieve this.
 
 Use `mm help` for more information!
 
@@ -92,7 +92,7 @@ Returns a list of all the monsters in the game.
 Returns a `Player` object representing the player you are controlling.
 
 `get_opponent()`
-Returns a `Player` object representing your opponent.
+Returns a `Player` object representing your opponent.  (Note: the opponent's destination will always appear to be -1.  This is by design -- neither player can see the other's destination)
 
 `submit_decision(destination, stance)`
 Takes an `int` `destination` and a string `stance` and sends this decision to the game engine.  You should call this method exactly once per turn.
