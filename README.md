@@ -129,3 +129,4 @@ Returns a list of `Monster` structs for all monsters nearest to `node` (includin
 
 `nearest_monsters_with_name(node, name, search_type)`
 Same as `nearest_monsters`, but only considers monsters with name `name`.
+(Note: since, on our map, there is only one monster with any given name, the list returned by this method will contain a maximum of 1 monster)
